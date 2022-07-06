@@ -59,10 +59,10 @@ def execute_cmd(cmd):
     if cmd == 'dispetcher':
         os.system("taskmgr")
 
-    elif cmd == 'panel':
+    if cmd == 'panel':
         os.system("control")
 
-    elif cmd == 'poisk':
+    if cmd == 'poisk':
         with sr.Microphone() as source:
             print("Что искать?")
             audio = r.listen(source)
@@ -75,10 +75,10 @@ def execute_cmd(cmd):
             except:
                 print("Не могу найти")
 
-    elif cmd == 'klav':
+    if cmd == 'klav':
         os.system("osk")
 
-    elif cmd == 'sch':
+    if cmd == 'sch':
         with sr.Microphone() as source:
             print("Что считать?")
             audio = r.listen(source)
@@ -94,9 +94,9 @@ def execute_cmd(cmd):
                 else: print('первое число не распознано, не удалось посчитать')
             except:
                 print("Не могу посчитать")
-    elif cmd == 'vikl':
+    if cmd == 'vikl':
         os.system("taskkill /F /T /IM cmd.exe")
-    elif cmd == 'comp':
+    if cmd == 'comp':
         os.system("shutdown -p")
 
 
