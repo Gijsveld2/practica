@@ -6,7 +6,6 @@ import webbrowser
 
 opts = {
     "alias": ('практика'),
-    "tbr": ('прошу', 'пожалуйста', 'умоляю'),
     "cmds": {
         "dispetcher": ('открой диспетчер задач', 'включи диспетчер задач', 'запусти диспетчер задач'),
         "panel": ('открой панель управления', 'включи панель управления', 'запусти панель управления'),
@@ -22,7 +21,7 @@ opts = {
 def callback(recognizer, audio):
     try:
         voice = recognizer.recognize_google(audio, language="ru-RU").lower()
-        print("[log] Распознано: " + voice)
+        print("Распознано: " + voice)
 
         if voice.startswith(opts["alias"]):
             cmd = voice
@@ -30,16 +29,11 @@ def callback(recognizer, audio):
             for x in opts['alias']:
                 cmd = cmd.replace(x, "").strip()
 
-            for x in opts['tbr']:
-                cmd = cmd.replace(x, "").strip()
-
             cmd = recognize_cmd(cmd)
             execute_cmd(cmd['cmd'])
 
     except sr.UnknownValueError:
-        print("[log] Голос не распознан!")
-    except sr.RequestError as e:
-        print("[log] Неизвестная ошибка, проверьте интернет!")
+        print("Команда не распознана!")
 
 
 def recognize_cmd(cmd):
